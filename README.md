@@ -1,4 +1,4 @@
-# PixGuardian
+# Guardian
 
 ## Requisitos
 - Java 17+
