@@ -4,21 +4,21 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class UserDTO {
+public class UserCreateDTO {
 
-    @NotBlank(message = "O nome é obrigatório")
-    @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres")
+    @NotBlank(message = "Nome é obrigatório")
+    @Size(max = 200)
     private String name;
 
-    @Email(message = "E-mail inválido")
-    @NotBlank(message = "O e-mail é obrigatório")
+    @NotBlank(message = "Email é obrigatório")
+    @Email(message = "Email inválido")
     private String email;
 
-    @NotBlank(message = "A senha é obrigatória")
-    @Size(min = 6, message = "A senha deve ter pelo menos 6 caracteres")
+    @NotBlank(message = "Senha é obrigatória")
+    @Size(min = 6, message = "Senha deve ter ao menos 6 caracteres")
     private String password;
 
-    // Getters e Setters
+    // getters / setters
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
