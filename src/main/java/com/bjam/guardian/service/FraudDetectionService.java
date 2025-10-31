@@ -28,7 +28,7 @@ public class FraudDetectionService {
      * Regras implementadas:
      *  - Valor alto (> 5000) -> WARNING
      *  - Target pix key criada há menos de 24 horas -> WARNING
-     *  - Mais de 3 transações de origem na última 1 minuto -> CRITICAL
+     *  - Mais de 3 transações de origem no último 1 minuto -> CRITICAL
      */
     @Transactional
     public void analyze(Transaction tx) {
