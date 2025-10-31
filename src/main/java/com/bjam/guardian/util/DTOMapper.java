@@ -1,14 +1,12 @@
 package com.bjam.guardian.util;
 
 import com.bjam.guardian.dto.AccountDTO;
-import com.bjam.guardian.dto.AlertDTO;
 import com.bjam.guardian.dto.FraudReportDTO;
 import com.bjam.guardian.dto.PixKeyDTO;
 import com.bjam.guardian.dto.TransactionDTO;
 import com.bjam.guardian.dto.TransactionResponseDTO;
 import com.bjam.guardian.dto.UserResponseDTO;
 import com.bjam.guardian.model.Account;
-import com.bjam.guardian.model.Alert;
 import com.bjam.guardian.model.FraudReport;
 import com.bjam.guardian.model.PixKey;
 import com.bjam.guardian.model.Transaction;
@@ -115,23 +113,27 @@ public class DTOMapper {
         return dto;
     }
 
-    /* ALERT */
-    public static Alert toAlertEntity(AlertDTO dto, Transaction tx) {
-        Alert a = new Alert();
-        a.setRelatedTransaction(tx);
-        a.setLevel(Alert.Level.valueOf(dto.getLevel()));
-        a.setMessage(dto.getMessage());
-        a.setRead(dto.isRead());
-        return a;
-    }
-
-    public static AlertDTO toAlertDTO(Alert a) {
-        AlertDTO dto = new AlertDTO();
+    // Entidade -> DTO
+    public static com.bjam.guardian.dto.AlertDTO toAlertDTO(com.bjam.guardian.model.Alert a) {
+        com.bjam.guardian.dto.AlertDTO dto = new com.bjam.guardian.dto.AlertDTO();
         dto.setId(a.getId());
         dto.setRelatedTransactionId(a.getRelatedTransaction() != null ? a.getRelatedTransaction().getId() : null);
         dto.setLevel(a.getLevel() != null ? a.getLevel().name() : null);
         dto.setMessage(a.getMessage());
-        dto.setRead(a.isRead());
+        dto.setRead(a.isRead()); // usa isRead() da entidade
         return dto;
     }
+
+    // DTO -> Entidade
+    public static com.bjam.guardian.model.Alert toAlertEntity(com.bjam.guardian.dto.AlertDTO dto, com.bjam.guardian.model.Transaction tx) {
+        com.bjam.guardian.model.Alert a = new com.bjam.guardian.model.Alert();
+        a.setRelatedTransaction(tx);
+        if (dto.getLevel() != null) {
+            a.setLevel(com.bjam.guardian.model.Alert.Level.valueOf(dto.getLevel()));
+        }
+        a.setMessage(dto.getMessage());
+        a.setRead(dto.isRead()); // seta isRead da entidade a partir do DTO
+        return a;
+    }
+
 }

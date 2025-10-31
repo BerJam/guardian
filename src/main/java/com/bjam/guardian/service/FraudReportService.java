@@ -1,5 +1,11 @@
 package com.bjam.guardian.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.bjam.guardian.dto.FraudReportDTO;
 import com.bjam.guardian.exception.ResourceNotFoundException;
 import com.bjam.guardian.model.FraudReport;
@@ -7,11 +13,6 @@ import com.bjam.guardian.model.Transaction;
 import com.bjam.guardian.model.User;
 import com.bjam.guardian.repository.FraudReportRepository;
 import com.bjam.guardian.util.DTOMapper;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class FraudReportService {

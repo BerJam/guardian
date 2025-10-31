@@ -1,15 +1,16 @@
 package com.bjam.guardian.service;
 
-import com.bjam.guardian.model.Alert;
-import com.bjam.guardian.model.PixKey;
-import com.bjam.guardian.model.Transaction;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.bjam.guardian.model.Alert;
+import com.bjam.guardian.model.PixKey;
+import com.bjam.guardian.model.Transaction;
 
 @Service
 public class FraudDetectionService {

@@ -34,7 +34,9 @@ public class Alert {
 
     private Instant createdAt = Instant.now();
 
-    private boolean read = false;
+    // Renomeado para evitar palavra reservada do DB; coluna será "is_read"
+    @Column(name = "is_read", nullable = false)
+    private boolean isRead = false;
 
     public Alert() {}
 
@@ -43,7 +45,7 @@ public class Alert {
         this.level = level;
         this.message = message;
         this.createdAt = Instant.now();
-        this.read = false;
+        this.isRead = false;
     }
 
     public Long getId() { return id; }
@@ -61,8 +63,8 @@ public class Alert {
     public Instant getCreatedAt() { return createdAt; }
     public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
 
-    public boolean isRead() { return read; }
-    public void setRead(boolean read) { this.read = read; }
+    public boolean isRead() { return isRead; }
+    public void setRead(boolean isRead) { this.isRead = isRead; }
 
     public enum Level { INFO, WARNING, CRITICAL }
 }
