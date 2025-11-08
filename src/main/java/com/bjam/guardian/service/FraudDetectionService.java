@@ -19,7 +19,7 @@ public class FraudDetectionService {
     private final AlertService alertService;
     private final TransactionService transactionService;
 
-    public FraudDetectionService(AlertService alertService, @Lazy TransactionService transactionService) {
+    public FraudDetectionService(@Lazy AlertService alertService, @Lazy TransactionService transactionService) {
         this.alertService = alertService;
         this.transactionService = transactionService;
     }
