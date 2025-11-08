@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +19,7 @@ public class FraudDetectionService {
     private final AlertService alertService;
     private final TransactionService transactionService;
 
-    public FraudDetectionService(AlertService alertService, TransactionService transactionService) {
+    public FraudDetectionService(@Lazy AlertService alertService, TransactionService transactionService) {
         this.alertService = alertService;
         this.transactionService = transactionService;
     }
